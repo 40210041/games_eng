@@ -40,3 +40,45 @@ void Load(){
   //reset ball position
   ball.setPosition();
 }
+
+
+void Update(RenderWindow &window){
+  //reset clock, recalculate deltatime
+  static Clock clock;
+  float dt = clock.restart().asSeconds();
+
+  //check and consume events
+  Event event;
+  while (window.pollEvent(event)){
+    if (event.type == Event::Closed){
+      window.close();
+      return;
+    }
+  }
+
+  //quit via esc key
+  if (Keyboard::isKeyPressed(Keyboard::Escape)){
+    window.close();
+  }
+
+  //handle paddle movement
+  float direction = 0.0f;
+  if (Keyboard::isKeyPressed(controls[0])){
+    direction--;
+  }
+  if (Keyboard::isKeyPressed(controls[1])){
+    directon++;
+  }
+  paddles[0].move(0, direction * paddle_speed * dt);
+}
+
+void Render(RenderWindow &window){
+  //draw everything
+  window.draw(paddles[0]);
+  window.draw(paddles[1]);
+  window.draw(ball);
+}
+
+int main(){
+  RenderWindow window(VideoMode(game_width, game_height))
+}
