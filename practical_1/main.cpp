@@ -17,10 +17,10 @@ const Vector2f paddleSize(25.f, 100.f); //Vector2f
 const float ball_radius = 10.f; //ballRadius
 const int game_width = 800; //gameWidth y
 const int game_height = 600; //gameHeight x
-const float paddle_speed = 400.f; //paddleSpeed
+const float paddle_speed = 600.f; //paddleSpeed
 //create shapes
 CircleShape ball;
-RectangleShape paddles[2]; //0 is right, 1 is left
+RectangleShape paddles[2]; //0 is left, 1 is right
 
 Vector2f ball_velocity; //ballVelocity
 bool server = false;
@@ -90,12 +90,20 @@ void Update(RenderWindow &window){
   float direction = 0.0f;
   float direction_2 = 0.0f;
 
-  if (Keyboard::isKeyPressed(controls[0])){
-    direction--;
+  // if (Keyboard::isKeyPressed(controls[0])){
+  //   direction--;
+  // }
+  // if (Keyboard::isKeyPressed(controls[1])){
+  //   direction++;
+  // }
+
+  if (paddles[0].getPosition().y > ball.getPosition().y){
+    direction --;
   }
-  if (Keyboard::isKeyPressed(controls[1])){
-    direction++;
+  if (paddles[0].getPosition().y < ball.getPosition().y){
+    direction ++;
   }
+
   paddles[0].move(0, direction * paddle_speed * dt);
   if (pad_0 + (paddleSize.y * 0.5) >= game_height){
     paddles[0].move(0,-10);
@@ -118,11 +126,6 @@ void Update(RenderWindow &window){
   if (pad_1 - (paddleSize.y * 0.5) <= 0){
     paddles[1].move(0,10);
   }
-
-
-
-
-
 
   //check ball collision
   const float ball_x = ball.getPosition().x; //bx
@@ -154,24 +157,21 @@ void Update(RenderWindow &window){
     ball_y > paddles[0].getPosition().y - (paddleSize.y * 0.5) &&
     //AND ball is above bottom edge of paddle
     ball_y < paddles[0].getPosition().y + (paddleSize.y * 0.5)
-  ) {
+  ){
     //bounce off left paddle
     ball_velocity.x *= -1.1f;
     ball_velocity.y *= -1.1f;
-    ball.move(200,0);
+    ball.move(10,0);
   }
-  else if (
-    //ball is inline or behind paddle
+  else if( //right paddle
     ball_x < paddleSize.x &&
-    //AND ball is below top edge of paddle
     ball_y > paddles[1].getPosition().y - (paddleSize.y * 0.5) &&
-    //AND ball is above bottom edge of paddle
     ball_y < paddles[1].getPosition().y + (paddleSize.y * 0.5)
   ){
     //bounce off right paddle
     ball_velocity.x *= 1.1f;
     ball_velocity.y *= 1.1f;
-    ball.move(-200,0);
+    ball.move(-10,0);
   }
 }
 
