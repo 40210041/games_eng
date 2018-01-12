@@ -160,18 +160,18 @@ void Update(RenderWindow &window){
   ){
     //bounce off left paddle
     ball_velocity.x *= -1.1f;
-    ball_velocity.y *= -1.1f;
-    ball.move(10,0);
+    ball_velocity.y *= 1.1f;
+    ball.move(0,0);
   }
   else if( //right paddle
-    ball_x < paddleSize.x &&
+    ball_x > game_width - paddleSize.x &&
     ball_y > paddles[1].getPosition().y - (paddleSize.y * 0.5) &&
     ball_y < paddles[1].getPosition().y + (paddleSize.y * 0.5)
   ){
     //bounce off right paddle
-    ball_velocity.x *= 1.1f;
+    ball_velocity.x *= -1.1f;
     ball_velocity.y *= 1.1f;
-    ball.move(-10,0);
+    ball.move(0,0);
   }
 }
 
