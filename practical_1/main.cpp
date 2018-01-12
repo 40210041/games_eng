@@ -1,5 +1,9 @@
 //pong.cpp
 //coords are reversed, up = --, down = ++, left = --, right = ++
+
+////// need to reset ball speed
+////// need to do the text
+
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -17,7 +21,7 @@ const Vector2f paddleSize(25.f, 100.f); //Vector2f
 const float ball_radius = 10.f; //ballRadius
 const int game_width = 800; //gameWidth y
 const int game_height = 600; //gameHeight x
-const float paddle_speed = 600.f; //paddleSpeed
+const float paddle_speed = 400.f; //paddleSpeed
 //create shapes
 CircleShape ball;
 RectangleShape paddles[2]; //0 is left, 1 is right
@@ -33,10 +37,11 @@ void reset(){
   score_1 ++;
   //reset paddle position
   paddles[0].setPosition(10 + paddleSize.x / 2, game_height / 2);
-  paddles[1].setPosition(760 + paddleSize.x / 2, game_height / 2);
+  paddles[1].setPosition(770 + paddleSize.x / 2, game_height / 2);
   //reset ball position
   ball.setPosition(game_width / 2, game_height / 2);
-
+  //set velocity
+  ball_velocity = {server ? 100.0f : -100.0f, 60.0f};
   // //update score text
   // text.setString("Hello :D");
   // //keep score text centered
@@ -106,10 +111,10 @@ void Update(RenderWindow &window){
 
   paddles[0].move(0, direction * paddle_speed * dt);
   if (pad_0 + (paddleSize.y * 0.5) >= game_height){
-    paddles[0].move(0,-10);
+    paddles[0].move(0,-1);
   }
   if (pad_0 - (paddleSize.y * 0.5) <= 0){
-    paddles[0].move(0,10);
+    paddles[0].move(0,1);
   }
 
   //right paddle
@@ -119,12 +124,12 @@ void Update(RenderWindow &window){
   if (Keyboard::isKeyPressed(controls[3])){
     direction_2++;
   }
-  paddles[1].move(0, direction * paddle_speed * dt);
+  paddles[1].move(0, direction_2 * paddle_speed * dt);
   if (pad_1 + (paddleSize.y * 0.5) >= game_height){
-    paddles[1].move(0,-10);
+    paddles[1].move(0,-1);
   }
   if (pad_1 - (paddleSize.y * 0.5) <= 0){
-    paddles[1].move(0,10);
+    paddles[1].move(0,1);
   }
 
   //check ball collision
@@ -161,7 +166,7 @@ void Update(RenderWindow &window){
     //bounce off left paddle
     ball_velocity.x *= -1.1f;
     ball_velocity.y *= 1.1f;
-    ball.move(0,0);
+    ball.move(10,0);
   }
   else if( //right paddle
     ball_x > game_width - paddleSize.x &&
@@ -171,7 +176,7 @@ void Update(RenderWindow &window){
     //bounce off right paddle
     ball_velocity.x *= -1.1f;
     ball_velocity.y *= 1.1f;
-    ball.move(0,0);
+    ball.move(-10,0);
   }
 }
 
