@@ -37,7 +37,6 @@ file(GLOB_RECURSE SOURCES practical_2/*.cpp practical_2/*.h)
 add_executable(PRACTICAL_2_INVADERS ${SOURCES})
 target_include_directories(PRACTICAL_2_INVADERS SYSTEM PRIVATE ${SFML_INCS})
 target_link_libraries(PRACTICAL_2_INVADERS sfml-graphics)
-add_dependencies(PRACTICAL_2_INVADERS copy_resources)
 add_custom_target(copy_resources ALL COMMAND ${CMAKE_COMMAND}
 	-E copy_directory
 	"${PROJECT_SOURCE_DIR}/res"
@@ -45,5 +44,6 @@ add_custom_target(copy_resources ALL COMMAND ${CMAKE_COMMAND}
 set_target_properties(PRACTICAL_2_INVADERS PROPERTIES
 	VS_DEBUGGER_WORKING_DIRECTORY
 	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$<Configuration>/res)
+add_dependencies(PRACTICAL_2_INVADERS copy_resources)
 
 

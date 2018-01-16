@@ -14,6 +14,6 @@ Ship::Ship(IntRect ir) : Sprite()
   setTextureRect(_sprite);
 };
 
-void Ship::Update(const float $dt){}
+void Ship::Update(const float $dt) {}
 
 Ship::~Ship() = default;
