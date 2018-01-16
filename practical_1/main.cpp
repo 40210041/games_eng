@@ -1,7 +1,6 @@
 //pong.cpp
 //coords are reversed, up = --, down = ++, left = --, right = ++
 
-////// need to reset ball speed
 ////// need to do the text
 
 #include <SFML/Graphics.hpp>
@@ -124,7 +123,7 @@ void Update(RenderWindow &window){
   if (Keyboard::isKeyPressed(controls[3])){
     direction_2++;
   }
-  paddles[1].move(0, direction_2 * paddle_speed * dt);
+  paddles[1].move(0, direction * paddle_speed * dt);
   if (pad_1 + (paddleSize.y * 0.5) >= game_height){
     paddles[1].move(0,-1);
   }
