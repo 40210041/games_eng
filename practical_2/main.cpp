@@ -14,7 +14,7 @@ std::vector<Ship *> ships;
 
 void Load()
 {
-  if (!spritesheet.loadFromFile("Macintosh\_HD/Users/mandyyip$/Desktop/games_eng/res/img/invaders_sheet.png"))
+  if (!spritesheet.loadFromFile("//Mac/Home/Desktop/games_eng/res/img/invaders_sheet.png"))
   {
     cerr << "Failed to load spritesheet!" << std::endl;
   }
