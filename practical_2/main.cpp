@@ -1,27 +1,32 @@
 //main.cpp
 //space invaders
-#include <iostream>
 #include <SFML/Graphics.hpp>
-#include "game.h"
+#include <iostream>
 
-std::vector<Ship *>ships;
+#include "ship.h"
+//#include "game.h"
 
 using namespace sf;
 using namespace std;
 
+const int game_width = 800;
+const int game_height = 600;
+
 sf::Texture spritesheet;
 sf::Sprite invader;
+std::vector<Ship *> ships;
+
 
 //load
-void Load()
-{
-  if (!spritesheet.loadFromFile("res/img/invaders_sheet.png"))
-  {
-    cerr << "Failed to load spritesheet!" << std::endl;
-  }
-  invader.setTexture(spritesheet);
-  sprite.setTextureRect(sf::IntRect(0,0,32,32));
-}
+//void Load()
+//{
+  // if (!spritesheet.loadFromFile("res/img/invaders_sheet.png"))
+  // {
+  //   cerr << "Failed to load spritesheet!" << std::endl;
+  // }
+  // invader.setTexture(spritesheet);
+  // sprite.setTextureRect(sf::IntRect(0,0,32,32));
+//}
 
 //update
 void Update(RenderWindow &window)
@@ -51,19 +56,21 @@ void Update(RenderWindow &window)
 //Render
 void Render(RenderWindow &window)
 {
-  window.draw(invader);
+  // window.draw(invader);
 }
 
 
 //main
-void main()
+int main()
 {
   RenderWindow window(VideoMode(game_width, game_height), "SPACE INVADER");
-  Load();
-  while (window.isOpen()){
+  //Load();
+  while (window.isOpen())
+  {
     window.clear();
     Update(window);
     Render(window);
     window.display();
   }
+  return 0;
 }

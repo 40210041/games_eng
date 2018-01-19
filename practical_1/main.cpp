@@ -36,7 +36,7 @@ void reset(){
   score_1 ++;
   //reset paddle position
   paddles[0].setPosition(10 + paddleSize.x / 2, game_height / 2);
-  paddles[1].setPosition(770 + paddleSize.x / 2, game_height / 2);
+  paddles[1].setPosition((game_width - 10) - paddleSize.x / 2, game_height / 2);
   //reset ball position
   ball.setPosition(game_width / 2, game_height / 2);
   //set velocity
