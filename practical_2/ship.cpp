@@ -1,6 +1,6 @@
-//ship.cpp
 #include "ship.h"
 #include "game.h"
+
 using namespace sf;
 using namespace std;
 
@@ -15,6 +15,6 @@ Ship::Ship(IntRect ir) : Sprite()
 
 void Ship::Update(const float &dt) {}
 
-//define the ship deconstructor
-//although we set this to pure virtual, we still have to define it
+// define the ship deconstructor
+// although we est this to pure virtual, we still have to define it
 Ship::~Ship() = default;
