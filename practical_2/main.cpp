@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+
 #include "ship.h"
 #include "game.h"
 
@@ -14,10 +15,12 @@ std::vector<Ship *> ships;
 
 void Load()
 {
+	//error message if file not found
   if (!spritesheet.loadFromFile("//Mac/Home/Desktop/games_eng/res/img/invaders_sheet.png"))
   {
     cerr << "Failed to load spritesheet!" << std::endl;
   }
+  //set texture to invader sprite
   invader.setTexture(spritesheet);
   invader.setTextureRect(sf::IntRect(0, 0, 32, 32));
 }
@@ -38,7 +41,7 @@ void Update(RenderWindow &window)
     }
   }
 
-  // quit via ESC key
+  // quit via esc key
   if (Keyboard::isKeyPressed(Keyboard::Escape)) {
     window.close();
   }

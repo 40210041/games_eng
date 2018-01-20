@@ -38,7 +38,7 @@ add_executable(PRACTICAL_2_INVADERS ${SOURCES})
 target_include_directories(PRACTICAL_2_INVADERS SYSTEM PRIVATE ${SFML_INCS})
 target_link_libraries(PRACTICAL_2_INVADERS sfml-graphics)
 
-set_target_properties(PRACTICAL_2_INVADERS 
+set_target_properties(PRACTICAL_2_INVADERS
 	PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY
 	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$(Configuration)
 )
@@ -46,4 +46,6 @@ set_target_properties(PRACTICAL_2_INVADERS
 add_custom_target(copy_resources ALL COMMAND ${CMAKE_COMMAND}
 	-E copy_directory
 	"${PROJECT_SOURCE_DIR}/res"
-	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$<CONFIGURATION>/res)
+	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$<CONFIGURATION>/res
+)
+add_dependencies(PRACTICAL_2_INVADERS copy_resources)
