@@ -48,4 +48,4 @@ add_custom_target(copy_resources ALL COMMAND ${CMAKE_COMMAND}
 	"${PROJECT_SOURCE_DIR}/res"
 	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$<CONFIGURATION>/res)
 
-
+add_dependencies(PRACTICAL_2_INVADERS copy_resources)

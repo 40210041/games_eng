@@ -1,40 +1,36 @@
 //main.cpp
-//space invaders
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
 #include "ship.h"
-//#include "game.h"
+#include "game.h"
 
 using namespace sf;
 using namespace std;
-
-const int game_width = 800;
-const int game_height = 600;
 
 sf::Texture spritesheet;
 sf::Sprite invader;
 std::vector<Ship *> ships;
 
+void Load()
+{
+	//error message if file not found
+  if (!spritesheet.loadFromFile("//Mac/Home/Desktop/games_eng/res/img/invaders_sheet.png"))
+  {
+    cerr << "Failed to load spritesheet!" << std::endl;
+  }
+  //set texture to invader sprite
+  invader.setTexture(spritesheet);
+  invader.setTextureRect(sf::IntRect(0, 0, 32, 32));
+}
 
-//load
-//void Load()
-//{
-  // if (!spritesheet.loadFromFile("res/img/invaders_sheet.png"))
-  // {
-  //   cerr << "Failed to load spritesheet!" << std::endl;
-  // }
-  // invader.setTexture(spritesheet);
-  // sprite.setTextureRect(sf::IntRect(0,0,32,32));
-//}
-
-//update
 void Update(RenderWindow &window)
 {
-  //reset clock, recalculate deltatime (dt)
+  // reset clock, recalculate deltatime
   static Clock clock;
-  float dt =  clock.restart().asSeconds();
-  //check and consume events
+  float dt = clock.restart().asSeconds();
+  // check and consume events
   Event event;
   while (window.pollEvent(event))
   {
@@ -45,28 +41,22 @@ void Update(RenderWindow &window)
     }
   }
 
-  //quit via escape Key
-  if (Keyboard::isKeyPressed(Keyboard::Escape))
-  {
+  // quit via esc key
+  if (Keyboard::isKeyPressed(Keyboard::Escape)) {
     window.close();
   }
 }
 
-
-//Render
 void Render(RenderWindow &window)
 {
-  // window.draw(invader);
+  window.draw(invader);
 }
 
-
-//main
 int main()
 {
-  RenderWindow window(VideoMode(game_width, game_height), "SPACE INVADER");
-  //Load();
-  while (window.isOpen())
-  {
+  RenderWindow window(VideoMode(game_width, game_height), "SPACE INVADERS");
+  Load();
+  while(window.isOpen()){
     window.clear();
     Update(window);
     Render(window);
