@@ -4,6 +4,9 @@
 using namespace sf;
 using namespace std;
 
+bool Invader::direction;
+float Invader::speed;
+
 Ship::Ship() {};
 
 Ship::Ship(IntRect ir) : Sprite()
@@ -18,6 +21,7 @@ void Ship::Update(const float &dt) {}
 //define the ship deconstructor
 //although we set this to pure virtual, we still have to define it
 Ship::~Ship() = default;
+
 
 Invader::Invader() : Ship() {}
 
