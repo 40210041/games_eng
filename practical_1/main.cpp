@@ -60,7 +60,7 @@ void Load(){
   ball_velocity = {server ? 100.0f : -100.0f, 60.0f};
 
   // //load font face from res dir
-  // font.loadFromFile("res/fonts/Arcade.ttf");
+  // font.loadFromFile("//Mac/Home/Desktop/games_eng/res//fonts/Arcade.ttf");
   // //set text element to use font
   // text.setFont(font);
   // //set character size to 24 pixels
