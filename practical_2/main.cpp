@@ -25,7 +25,7 @@ void Load()
   invader.setTextureRect(sf::IntRect(0, 0, 32, 32));
 
   //vector of ships
-  Player* player = new Player(sf::IntRect(0,0,32,32), {100,100});
+  //Player* player = new Player(sf::IntRect(160,32,32,32));
   Invader* inv = new Invader(sf::IntRect(0,0,32,32), {100,100});
   ships.push_back(inv);
 
@@ -66,8 +66,6 @@ void Update(RenderWindow &window)
   {
     s->Update(dt);
   }
-
-  player.move(move_player * move_speed * dt, 0); //check for answer
 }
 
 void Render(RenderWindow &window)

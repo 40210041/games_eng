@@ -1,6 +1,7 @@
 //ship.cpp
 #include "ship.h"
 #include "game.h"
+//#include "bullet.h"
 using namespace sf;
 using namespace std;
 
@@ -58,31 +59,38 @@ void Invader::Update(const float &dt)
 }
 
 
-Player::Player() : Ship(IntRect(160,32,32,32))
-{
-  setPosition({game_height * .5f, game_height - 32.f});
-}
+// Player::Player() : Ship(IntRect(160,32,32,32))
+// {
+//   setPosition({game_height * .5f, game_height - 32.f});
+// }
+//
+//
+// // STILL NEED TO DO THIS!!! //
+// void Player::Update(const float &dt)
+// {
+//   float move_player = 0.0f;
+//   float move_speed = 400.f;
+//
+//   Ship::Update(dt);
+//
+//   if (Keyboard::isKeyPressed(controls[0])){   //move Left
+//     move_player--;
+//   }
+//   if (Keyboard::isKeyPressed(controls[1])){   //move right
+//     move_player++;
+//   }
+//   //move(move_player * move_speed * dt, 0);
+//   player.move(move_player * move_speed * dt, 0); //check for answer
 
+  // //its bullet time
+  // static vector<Bullet* > bullets;
+  // if (Keyboard::isKeyPressed(controls[3]))
+  // {
+  //   bullets.push_back(new Bullet(getPosition(), false));
+  // }
+  // for (const auto s : bullets)
+  // {
+  //   bullets.Update(dt);
+  // }
 
-
-
-
-// STILL NEED TO DO THIS!!! //
-void Player::Update(const float &dt)
-{
-  float move_player = 0.0f;
-  float move_speed = 400.f;
-
-  Ship::Update(dt);
-
-  //move Left
-  if (Keyboard::isKeyPressed(controls[0])){
-    move_player--;
-  }
-
-  //move right
-  if (Keyboard::isKeyPressed(controls[1])){
-    move_player++;
-  }
-  //player.move(move_player * move_speed * dt, 0);
-}
+// }

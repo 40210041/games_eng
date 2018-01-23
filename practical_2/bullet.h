@@ -1,4 +1,5 @@
 //bullet.h
+//only need one bullet class as the 2 types are so similar
 #pragma once
 #include <SFML/Graphics.hpp>
 
