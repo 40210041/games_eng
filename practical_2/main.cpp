@@ -23,6 +23,10 @@ void Load()
   //set texture to invader sprite
   invader.setTexture(spritesheet);
   invader.setTextureRect(sf::IntRect(0, 0, 32, 32));
+
+  Invader* inv = new Invader(sf::IntRect(0,0,32,32), {100,100});
+  ships.push_back(inv);
+
 }
 
 void Update(RenderWindow &window)
@@ -45,16 +49,25 @@ void Update(RenderWindow &window)
   if (Keyboard::isKeyPressed(Keyboard::Escape)) {
     window.close();
   }
+
+  for (auto &s : ships)
+  {
+    s->Update(dt);
+  }
 }
 
 void Render(RenderWindow &window)
 {
   window.draw(invader);
+  for (const auto s : ships)
+  {
+    window.draw(*s);
+  }
 }
 
 int main()
 {
-  RenderWindow window(VideoMode(gameWidth, gameHeight), "SPACE INVADERS");
+  RenderWindow window(VideoMode(game_width, game_height), "SPACE INVADERS");
   Load();
   while(window.isOpen()){
     window.clear();

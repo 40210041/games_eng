@@ -18,3 +18,12 @@ public:
   //update, virtual so can be overrided, but not pure virtual
   virtual void Update(const float &dt);
 };
+
+
+class Invader : public Ship
+{
+public:
+  Invader(sf::IntRect ir, sf::Vector2f pos);
+  Invader();
+  void Update(const float &dt) override;
+};
