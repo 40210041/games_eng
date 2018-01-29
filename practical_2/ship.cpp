@@ -1,5 +1,4 @@
 //ship.cpp
-
 #include "ship.h"
 #include "game.h" //for spritesheet
 
