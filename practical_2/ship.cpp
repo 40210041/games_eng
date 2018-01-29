@@ -5,7 +5,7 @@
 using namespace sf;
 using namespace std;
 bool Invader::direction; //update values
-float Invader::speed = 20.f; //update values
+float Invader::speed; //update values
 
 Ship::Ship() {};
 
@@ -33,6 +33,9 @@ Invader::Invader(sf::IntRect ir, sf::Vector2f pos) : Ship(ir)
 
 void Invader::Update(const float &dt)
 {
+  //set invader speed
+	Invader::speed = 25.f;
+
   //call base ship::update to run generic ship logic
   Ship::Update(dt);
 
