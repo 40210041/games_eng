@@ -27,6 +27,16 @@ void Load()
   Invader* inv = new Invader(sf::IntRect(0,0,32,32), {100,100});
   ships.push_back(inv);
 
+  // for (int rows = 0; rows < invaders_rows; ++rows)
+  // {
+  //   auto rect = IntRect(0,0,32,32); //check answer
+  //   for (int columns = 0; column < invaders_columns; ++columns)
+  //   {
+  //     Vector2f position = {100,100}; //check answer
+  //     auto inv = new Invader(rect, position);
+  //     ships.push_back(inv);
+  //   }
+  // }
 }
 
 void Update(RenderWindow &window)
