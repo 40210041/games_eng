@@ -19,10 +19,13 @@ public:
   virtual void Update(const float &dt);
 };
 
-
+//3.5
 class Invader : public Ship
 {
 public:
+  //3.5.1
+  static bool direction;
+  static float speed;
   Invader(sf::IntRect ir, sf::Vector2f pos);
   Invader();
   void Update(const float &dt) override;
