@@ -5,8 +5,8 @@
 
 using namespace sf;
 using namespace std;
-bool Invader::direction;
-float Invader::speed;
+bool Invader::direction = 20;
+float Invader::speed = 20;
 
 Ship::Ship() {};
 
@@ -23,7 +23,7 @@ void Ship::Update(const float &dt) {}
 //although we set this to pure virtual, we still have to define it
 Ship::~Ship() = default;
 
-
+//3.5
 Invader::Invader() : Ship() {}
 
 Invader::Invader(sf::IntRect ir, sf::Vector2f pos) : Ship(ir)
@@ -39,7 +39,7 @@ void Invader::Update(const float &dt)
 
   //3.5.1
   //move left/right dictated by speed var
-  move(dt* (direction ? 1.0f : -1.0f) * speed, 0);
+  move(dt * (direction ? 1.0f : -1.0f) * speed, 0);
 
   //detect whether to drop or reverse
   if ((direction && getPosition().x > game_width - 16) ||
