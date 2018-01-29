@@ -1,12 +1,11 @@
 //ship.cpp
-
 #include "ship.h"
 #include "game.h" //for spritesheet
 
 using namespace sf;
 using namespace std;
-bool Invader::direction = 20;
-float Invader::speed = 20;
+bool Invader::direction; //update values
+float Invader::speed = 20.f; //update values
 
 Ship::Ship() {};
 
