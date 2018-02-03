@@ -19,23 +19,19 @@ void Load()
   {
     cerr << "Failed to load spritesheet!" << std::endl;
   }
-  //set texture to invader sprite
-  invader.setTexture(spritesheet);
-  invader.setTextureRect(sf::IntRect(0, 0, 32, 32));
 
-  Invader* inv = new Invader(sf::IntRect(0,0,32,32), {100,100});
-  ships.push_back(inv);
-
-  // for (int rows = 0; rows < invaders_rows; ++rows)
-  // {
-  //   auto rect = IntRect(0,0,32,32); //check answer
-  //   for (int columns = 0; column < invaders_columns; ++columns)
-  //   {
-  //     Vector2f position = {100,100}; //check answer
-  //     auto inv = new Invader(rect, position);
-  //     ships.push_back(inv);
-  //   }
-  // }
+  //3.5.2 create more invaders
+  for (int r = 0; r < invaders_rows; ++r)
+  {
+    //(left, top, width, height)
+    auto rect = IntRect(64,0,32,32); //check answer
+    for (int c = 0; c < invaders_columns; ++c)
+    {
+     Vector2f position = {float(c * 50),float(r * 45)}; //check answer
+      auto inv = new Invader(rect, position);
+      ships.push_back(inv);
+    }
+  }
 }
 
 void Update(RenderWindow &window)

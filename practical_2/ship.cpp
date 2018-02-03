@@ -34,7 +34,7 @@ Invader::Invader(sf::IntRect ir, sf::Vector2f pos) : Ship(ir)
 void Invader::Update(const float &dt)
 {
   //set invader speed
-	Invader::speed = 25.f;
+	Invader::speed = 20.f;
 
   //call base ship::update to run generic ship logic
   Ship::Update(dt);
