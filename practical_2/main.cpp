@@ -24,7 +24,7 @@ void Load()
   for (int r = 0; r < invaders_rows; ++r)
   {
     //(left, top, width, height)
-    auto rect = IntRect(64,0,32,32); //check answer
+    auto rect = IntRect(r * 32,0,32,32); //check answer
     for (int c = 0; c < invaders_columns; ++c)
     {
      Vector2f position = {float(c * 50),float(r * 45)}; //check answer
