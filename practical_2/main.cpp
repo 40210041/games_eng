@@ -23,8 +23,8 @@ void Load()
   //3.5.2 create more invaders
   for (int r = 0; r < invaders_rows; ++r)
   {
-    //(left, top, width, height)
-    auto rect = IntRect(64,0,32,32); //check answer
+    //(left, top, width, height), r * 32 to move along each invader sprite
+    auto rect = IntRect(r * 32,0,32,32); //check answer
     for (int c = 0; c < invaders_columns; ++c)
     {
      Vector2f position = {float(c * 50),float(r * 45)}; //check answer
