@@ -29,3 +29,11 @@ public:
   Invader();
   void Update(const float &dt) override;
 };
+
+//3.6 add player class
+class Player : public Ship
+{
+public:
+  Player();
+  void Update(const float &dt) override;
+};
