@@ -49,3 +49,12 @@ add_custom_target(copy_resources ALL COMMAND ${CMAKE_COMMAND}
 	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$<CONFIGURATION>/res)
 
 add_dependencies(PRACTICAL_2_INVADERS copy_resources)
+
+
+###########################
+# practical 3 – TILE GAME #
+###########################
+file(GLOB_RECURSE SOURCES practical_3/*.cpp practical_3/*.h)
+add_executable(PRACTICAL_3_TILE ${SOURCES})
+target_include_directories(PRACTICAL_3_TILE SYSTEM PRIVATE ${SFML_INCS})
+target_link_libraries(PRACTICAL_3_TILE sfml-graphics)

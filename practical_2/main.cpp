@@ -23,7 +23,7 @@ void Load()
   //3.5.2 create more invaders
   for (int r = 0; r < invaders_rows; ++r)
   {
-    //(left, top, width, height)
+    //(left, top, width, height), r * 32 to move along each invader sprite
     auto rect = IntRect(r * 32,0,32,32); //check answer
     for (int c = 0; c < invaders_columns; ++c)
     {
@@ -32,6 +32,12 @@ void Load()
       ships.push_back(inv);
     }
   }
+  // //set image of the player ship
+  // auto rect_p = IntRect(192, 32, 32, 32);
+  // //set the position
+  // Vector2f position_p = {game_width/2, game_height - 32};
+  // //create player sprite
+  // auto player_ship = new Player(rect_p, position_p);
 }
 
 void Update(RenderWindow &window)

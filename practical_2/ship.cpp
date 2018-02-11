@@ -5,7 +5,14 @@
 using namespace sf;
 using namespace std;
 bool Invader::direction; //update values
-float Invader::speed; //update values
+float Invader::speed = 20.f; //update values
+
+//3.6 player controls
+const Keyboard::Key controls[3] = {
+  Keyboard::Space, //shoot bullet
+  Keyboard::Left, //p2 up
+  Keyboard::Right //p2 down
+};
 
 Ship::Ship() {};
 
@@ -34,7 +41,7 @@ Invader::Invader(sf::IntRect ir, sf::Vector2f pos) : Ship(ir)
 void Invader::Update(const float &dt)
 {
   //set invader speed
-	Invader::speed = 20.f;
+  //Invader::speed = 20.f;
 
   //call base ship::update to run generic ship logic
   Ship::Update(dt);
@@ -53,4 +60,22 @@ void Invader::Update(const float &dt)
       ships[i]->move(0,24);
     }
   }
+}
+
+//3.6 set the Player position
+Player::Player() : Ship(IntRect(160, 32, 32,32))
+{
+  setPosition({game_height * .5f, game_height - 32.f});
+}
+
+//3.6 move player
+void Player::Update(const float &dt)
+{
+  Ship::Update(dt);
+
+  //move left
+
+
+  //move right
+  
 }
