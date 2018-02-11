@@ -12,7 +12,24 @@ void Load()
 
 void Update(RenderWindow &window)
 {
+  // reset clock, recalculate deltatime
+  static Clock clock;
+  float dt = clock.restart().asSeconds();
+  // check and consume events
+  Event event;
+  while (window.pollEvent(event))
+  {
+    if (event.type == Event::Closed)
+    {
+      window.close();
+      return;
+    }
+  }
 
+  // quit via esc key
+  if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+    window.close();
+  }
 }
 
 void Render(RenderWindow &window)

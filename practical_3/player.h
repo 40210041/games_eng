@@ -8,7 +8,7 @@ private:
   float _speed;
 
 public:
-  void update(double dt) override;
+  void Update(double dt) override;
   Player();
   void render(sf::RenderWindow &window) const override;
 };
